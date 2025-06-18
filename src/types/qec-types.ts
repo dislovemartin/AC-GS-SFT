@@ -80,3 +80,99 @@ export interface StabilizerCheck {
   weight: number;
   expected_outcome: 1 | -1;
 }
+
+// AI Governance Extension Types
+export interface LogicalSemanticUnit {
+  id: string;
+  content: string;
+  category: "policy" | "rule" | "requirement" | "constraint";
+  priority: "low" | "medium" | "high" | "critical";
+  source: "manual" | "regulatory" | "stakeholder" | "ai_generated";
+  created_at: string;
+  metadata?: Record<string, any>;
+}
+
+export interface PolicyArtifact {
+  id: string;
+  type: "rego_policy" | "tla_spec" | "python_test" | "documentation";
+  content: string;
+  lsu_id: string;
+  generated_by: "simulation" | "ai_model" | "hybrid";
+  model_used?: string;
+  confidence_score: number;
+  validation_status: "pending" | "validated" | "failed";
+  created_at: string;
+}
+
+export interface EnsembleResult {
+  models_used: string[];
+  outputs: string[];
+  consensus_method: "majority_vote" | "weighted_average" | "confidence_weighted";
+  final_output: string;
+  confidence_score: number;
+  agreement_score: number;
+  individual_confidences: number[];
+  processing_time_ms: number;
+}
+
+export interface ConstitutionalPrinciple {
+  id: string;
+  title: string;
+  description: string;
+  category: "fairness" | "transparency" | "accountability" | "privacy" | "safety";
+  weight: number;
+  examples: string[];
+  stakeholder_votes: number;
+  created_at: string;
+}
+
+export interface BiasAssessment {
+  overall_score: number;
+  dimension_scores: {
+    gender: number;
+    age: number;
+    race_ethnicity: number;
+    socioeconomic: number;
+    geographic: number;
+    political: number;
+    religious: number;
+    disability: number;
+    sexual_orientation: number;
+  };
+  flagged_issues: string[];
+  mitigation_suggestions: string[];
+  confidence: number;
+  assessment_model: string;
+}
+
+export interface PolicyEnforcementResult {
+  request_id: string;
+  decision: "allow" | "deny" | "conditional";
+  policy_id: string;
+  processing_time_ms: number;
+  confidence: number;
+  explanation: string;
+  applied_rules: string[];
+  risk_score: number;
+  audit_trail: {
+    timestamp: string;
+    action: string;
+    details: Record<string, any>;
+  }[];
+}
+
+export interface AIGovernanceReport {
+  id: string;
+  lsu_id: string;
+  policy_artifacts: PolicyArtifact[];
+  ensemble_results: EnsembleResult[];
+  bias_assessment: BiasAssessment;
+  constitutional_alignment: {
+    principle_id: string;
+    compliance_score: number;
+    violations: string[];
+  }[];
+  enforcement_simulation: PolicyEnforcementResult[];
+  recommendations: string[];
+  generated_at: string;
+}
