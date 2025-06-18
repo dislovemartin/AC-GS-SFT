@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, Cpu, Zap } from 'lucide-react';
+import { Shield, Cpu, Zap, Brain, Scale } from 'lucide-react';
 
 const Header: React.FC = () => {
   return (
@@ -18,19 +18,34 @@ const Header: React.FC = () => {
                 QEC-SFT Platform
               </h1>
               <p className="text-sm text-slate-400">
-                Quantum-Inspired Semantic Fault Tolerance Visualizer
+                AI-Powered Governance & Semantic Fault Tolerance
               </p>
             </div>
           </div>
           
           <div className="hidden md:flex items-center gap-6">
+            {/* Multi-AI Status */}
+            <div className="flex items-center gap-2 text-slate-400">
+              <Brain className="h-4 w-4 text-purple-400" />
+              <span className="text-sm">Multi-AI</span>
+            </div>
+            
+            {/* Constitutional AI Status */}
+            <div className="flex items-center gap-2 text-slate-400">
+              <Scale className="h-4 w-4 text-yellow-400" />
+              <span className="text-sm">Constitutional AI</span>
+            </div>
+            
+            {/* Version */}
             <div className="flex items-center gap-2 text-slate-400">
               <Cpu className="h-4 w-4" />
-              <span className="text-sm">v8.0.0</span>
+              <span className="text-sm">v8.2.0</span>
             </div>
+            
+            {/* Demo Mode */}
             <div className="flex items-center gap-2 text-slate-400">
               <Zap className="h-4 w-4" />
-              <span className="text-sm">Demo Mode</span>
+              <span className="text-sm">Enhanced Mode</span>
             </div>
           </div>
         </div>

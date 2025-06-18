@@ -1,13 +1,25 @@
 {
   "name": "qec-sft-platform-pwa",
   "private": true,
-  "version": "1.3.0",
+  "version": "8.2.0",
   "type": "module",
+  "description": "AI-Powered Quantum-Inspired Semantic Fault Tolerance Platform with Constitutional Governance",
+  "keywords": ["ai", "governance", "semantic-analysis", "constitutional-ai", "policy-generation", "pwa"],
+  "author": "QEC-SFT Platform Team",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:analyze": "vite build --mode analyze",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy:preview": "./deploy.sh && netlify deploy --dir=dist",
+    "deploy:prod": "./deploy.sh && netlify deploy --prod --dir=dist",
+    "clean": "rm -rf dist node_modules/.vite",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,css,md}\"",
+    "lighthouse": "lighthouse http://localhost:4173 --output=html --output-path=./lighthouse-report.html"
   },
   "dependencies": {
     "@anthropic-ai/claude-code": "^1.0.27",
@@ -33,5 +45,21 @@
     "typescript-eslint": "^8.3.0",
     "vite": "^5.4.2",
     "vite-plugin-pwa": "^0.20.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

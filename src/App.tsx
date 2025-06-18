@@ -4,6 +4,7 @@ import EnhancedQecPipelineRunner from './components/EnhancedQecPipelineRunner';
 import EnhancedResultDisplay from './components/EnhancedResultDisplay';
 import AlgorandDashboard from './components/AlgorandDashboard';
 import AlphaEvolveACGSDashboard from './components/AlphaEvolveACGSDashboard';
+import AIGovernanceDashboard from './components/AIGovernanceDashboard';
 import { useEnhancedQecPipeline } from './hooks/useEnhancedQecPipeline';
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
     aiStatus,
     checkAIStatus
   } = useEnhancedQecPipeline();
-  const [activeTab, setActiveTab] = useState<'qec' | 'algorand' | 'acgs'>('qec');
+  const [activeTab, setActiveTab] = useState<'qec' | 'governance' | 'acgs' | 'algorand'>('qec');
 
   return (
     <MainLayout>
@@ -34,6 +35,16 @@ function App() {
             AI-Enhanced QEC Pipeline
           </button>
           <button
+            onClick={() => setActiveTab('governance')}
+            className={`py-2 px-4 font-medium text-sm leading-5 rounded-t-lg transition-colors ${
+              activeTab === 'governance'
+                ? 'border-b-2 border-purple-500 text-purple-600'
+                : 'text-gray-500 hover:text-gray-700'
+            }`}
+          >
+            AI Governance Suite
+          </button>
+          <button
             onClick={() => setActiveTab('acgs')}
             className={`py-2 px-4 font-medium text-sm leading-5 rounded-t-lg transition-colors ${
               activeTab === 'acgs'
@@ -47,7 +58,7 @@ function App() {
             onClick={() => setActiveTab('algorand')}
             className={`py-2 px-4 font-medium text-sm leading-5 rounded-t-lg transition-colors ${
               activeTab === 'algorand'
-                ? 'border-b-2 border-blue-500 text-blue-600'
+                ? 'border-b-2 border-cyan-500 text-cyan-600'
                 : 'text-gray-500 hover:text-gray-700'
             }`}
           >
@@ -89,6 +100,12 @@ function App() {
               </div>
             )}
           </>
+        )}
+
+        {activeTab === 'governance' && (
+          <div className="animate-fade-in">
+            <AIGovernanceDashboard />
+          </div>
         )}
 
         {activeTab === 'acgs' && (
